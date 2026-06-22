@@ -18,16 +18,16 @@ public class CityBuilderBootstrap : MonoBehaviour
             mainCamera = Camera.main;
 
         if (grid == null)
-            grid = FindObjectOfType<CityGrid>();
+            grid = FindAnyObjectByType<CityGrid>();
 
         if (resources == null)
-            resources = FindObjectOfType<CityResources>();
+            resources = FindAnyObjectByType<CityResources>();
 
         if (buildManager == null)
-            buildManager = FindObjectOfType<BuildManager>();
+            buildManager = FindAnyObjectByType<BuildManager>();
 
         if (economyTicker == null)
-            economyTicker = FindObjectOfType<EconomyTicker>();
+            economyTicker = FindAnyObjectByType<EconomyTicker>();
 
         WireBuildManager();
         WireEconomy();

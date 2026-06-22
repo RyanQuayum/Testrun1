@@ -22,7 +22,7 @@ public class EconomyTicker : MonoBehaviour
 
     private void Awake()
     {
-        BuildManager buildManager = FindObjectOfType<BuildManager>();
+        BuildManager buildManager = FindAnyObjectByType<BuildManager>();
 
         if (buildManager != null)
             buildManager.BuildingPlaced += Register;

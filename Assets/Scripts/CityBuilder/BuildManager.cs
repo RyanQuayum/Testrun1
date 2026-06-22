@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BuildManager : MonoBehaviour
+/*
+    Building Placement System.
+*/
 {
     [Header("Scene References")]
     public Camera mainCamera;
@@ -43,6 +46,7 @@ public class BuildManager : MonoBehaviour
     }
 
     public bool TryPlaceSelected()
+    // Try initalise object and place on grid.
     {
         if (selectedBuilding == null || selectedBuilding.prefab == null || !previewIsValid)
             return false;
@@ -66,6 +70,10 @@ public class BuildManager : MonoBehaviour
     }
 
     private void UpdatePreview()
+    /*
+        Checks if cell is valid, whether user can place and afford place
+        then sets preview with transform position and correct material.
+    */
     {
         if (selectedBuilding == null)
         {
@@ -91,6 +99,7 @@ public class BuildManager : MonoBehaviour
     }
 
     private bool TryGetPointerCell(out Vector2Int cell)
+    // Get position of cell from grid relative to camera by casting a ray. 
     {
         cell = default;
 
@@ -121,6 +130,10 @@ public class BuildManager : MonoBehaviour
     }
 
     private void RebuildPreview()
+    /*
+        Creates preview (ghost) of selected building.
+        Initialises preview with name and material.
+    */
     {
         DestroyPreview();
 

@@ -8,13 +8,22 @@ public class CityGrid : MonoBehaviour
     public LayerMask terrainMask = ~0;
 
     private BuildingInstance[,] occupied;
+    /*
+        2D array representing the grid, either occupied or NULL, e.g:
+        occupied[0,0]
+        ...
+        occupied[64,64]
+    */
 
     private void Awake()
     {
-        occupied = new BuildingInstance[size.x, size.y];
+        occupied = new BuildingInstance[size.x, size.y]; // Clears Grid on start
     }
 
     public bool TryGetCellFromWorld(Vector3 worldPosition, out Vector2Int cell)
+    /*
+        Converts world location to closest matching cell position.
+    */
     {
         Vector3 local = transform.InverseTransformPoint(worldPosition);
         cell = new Vector2Int(Mathf.FloorToInt(local.x / cellSize), Mathf.FloorToInt(local.z / cellSize));
@@ -22,12 +31,19 @@ public class CityGrid : MonoBehaviour
     }
 
     public Vector3 CellToWorld(Vector2Int cell)
+    /*
+        Converts cell to world location.
+    */
     {
         Vector3 local = new Vector3((cell.x + 0.5f) * cellSize, 0f, (cell.y + 0.5f) * cellSize);
         return transform.TransformPoint(local);
     }
 
     public bool CanPlace(Vector2Int origin, Vector2Int footprint)
+    /*
+        Checks if every cell of the potential building is in the grid
+        And that none of those cells are occupied.
+    */
     {
         for (int x = 0; x < footprint.x; x++)
         {
@@ -44,11 +60,13 @@ public class CityGrid : MonoBehaviour
     }
 
     public void Occupy(BuildingInstance building)
+    // Marks cells in the grid as occupied
     {
         SetCells(building, building.Origin, building.Definition.footprint);
     }
 
     public void Clear(BuildingInstance building)
+    // Clears cells in the grid, making them NULL.
     {
         SetCells(null, building.Origin, building.Definition.footprint);
     }

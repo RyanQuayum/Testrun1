@@ -1,6 +1,12 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Medieval City Builder/Building Definition")]
+/* 
+    Framework defines a building object.
+    Right click in PROJECT Window, CREATE, Medieval City Builder, Building Definition.
+*/
+
+
 public class BuildingDefinition : ScriptableObject
 {
     [Header("Identity")]

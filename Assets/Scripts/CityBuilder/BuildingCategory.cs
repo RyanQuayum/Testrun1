@@ -1,4 +1,8 @@
 public enum BuildingCategory
+
+/*
+    Enum contains Building Types.
+*/
 {
     Road,
     Housing,
