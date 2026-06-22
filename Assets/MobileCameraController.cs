@@ -12,10 +12,10 @@ public class MobileCameraController : MonoBehaviour
     public float maxZoomDistance = 30f;
 
     [Header("Bounds")]
-    public float minX = -200f;
-    public float maxX = 200f;
-    public float minZ = -200f;
-    public float maxZ = 200f;
+    public float minX = -2000f;
+    public float maxX = 2000f;
+    public float minZ = -2000f;
+    public float maxZ = 2000f;
 
     private Vector2 lastPointerPosition;
     private bool isDragging;
