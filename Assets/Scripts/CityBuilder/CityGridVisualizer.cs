@@ -40,6 +40,49 @@ public class CityGridVisualizer : MonoBehaviour
         RebuildGrid();
     }
 
+    private void OnDrawGizmos()
+    {
+        CityGrid editorGrid = GetComponent<CityGrid>();
+
+        if (editorGrid == null)
+        return;
+
+        if (!showGrid)
+        return;
+
+        Gizmos.color = lineColor;
+
+        float width = editorGrid.size.x * editorGrid.cellSize;
+        float depth = editorGrid.size.y * editorGrid.cellSize;
+
+
+        for (int x = 0; x <= editorGrid.size.x; x++)
+        {
+            float xPosition = x * editorGrid.cellSize;
+
+            Vector3 start = new Vector3(xPosition, yOffset, 0f);
+            Vector3 end = new Vector3(xPosition, yOffset, depth);
+
+            Gizmos.DrawLine(
+                editorGrid.transform.TransformPoint(start),
+                editorGrid.transform.TransformPoint(end)
+            );
+        }
+
+    for (int y = 0; y <= editorGrid.size.y; y++)
+        {
+            float zPosition = y * editorGrid.cellSize;
+
+            Vector3 start = new Vector3(0f, yOffset, zPosition);
+            Vector3 end = new Vector3(width, yOffset, zPosition);
+
+            Gizmos.DrawLine(
+                editorGrid.transform.TransformPoint(start),
+                editorGrid.transform.TransformPoint(end)
+            );
+        }
+    }
+
     public void RebuildGrid()
     {
         if (grid == null)
