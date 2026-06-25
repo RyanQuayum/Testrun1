@@ -8,6 +8,7 @@ public class CityBuilderBootstrap : MonoBehaviour
     public CityResources resources;
     public BuildManager buildManager;
     public EconomyTicker economyTicker;
+    public ResourceTopBar resourceTopBar;
 
     [Header("Optional Starter Selection")]
     public BuildingDefinition firstBuildingToPlace;
@@ -29,8 +30,12 @@ public class CityBuilderBootstrap : MonoBehaviour
         if (economyTicker == null)
             economyTicker = FindAnyObjectByType<EconomyTicker>();
 
+        if (resourceTopBar == null)
+            resourceTopBar = FindAnyObjectByType<ResourceTopBar>();
+
         WireBuildManager();
         WireEconomy();
+        WireResourceTopBar();
     }
 
     private void Start()
@@ -55,5 +60,13 @@ public class CityBuilderBootstrap : MonoBehaviour
             return;
 
         economyTicker.resources = resources;
+    }
+
+    private void WireResourceTopBar()
+    {
+        if (resourceTopBar == null)
+            return;
+
+        resourceTopBar.SetResources(resources);
     }
 }

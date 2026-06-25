@@ -10,6 +10,18 @@ This folder contains a lightweight Unity gameplay framework for a mobile-friendl
 4. Assign the main camera, terrain layer mask, preview materials, and optional first building.
 5. Call `BuildManager.SelectBuilding(definition)` from UI buttons to enter placement mode.
 
+## Resource top bar
+
+Use `ResourceTopBar` to keep a UI bar synchronized with `CityResources`.
+
+1. Create a reusable UI prefab with `ResourceCounterView` on the root.
+2. Assign its label text, amount text, and optional icon image.
+3. Add `ResourceTopBar` to the top bar container in your Canvas.
+4. Assign the counter prefab and add one tracked entry for each `ResourceType` you want to show.
+5. Assign `CityResources` directly or let `CityBuilderBootstrap` find and wire the top bar at runtime.
+
+Each tracked entry can use the same prefab, a custom display name, and an optional icon, so the bar can be reused for gold, wood, stone, food, population, happiness, or any future resource enum value.
+
 ## Suggested medieval building set
 
 - **Road:** Dirt Road, Stone Road
