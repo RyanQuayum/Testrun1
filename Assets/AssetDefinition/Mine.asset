@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58f892d9115c468d829c4d83cfe541ef, type: 3}
-  m_Name: Chapel
+  m_Name: Mine
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
-  id: 1
-  displayName: Town House
-  description: Peasants Congregate Here.
-  category: 5
+  id: 
+  displayName: 
+  description: 
+  category: 0
   icon: {fileID: 0}
-  prefab: {fileID: 124316, guid: 32f9e7f1053b38c41b83321d0efbe230, type: 3}
-  footprint: {x: 10, y: 10}
+  prefab: {fileID: 7505317572642171324, guid: c71134b4ea593254ba53a86120e08f33, type: 3}
+  footprint: {x: 4, y: 4}
   requiresRoadAccess: 1
-  unlockLevel: 0
+  unlockLevel: 1
   buildCost: []
   storageProvided: []
   productionPerTick: []
