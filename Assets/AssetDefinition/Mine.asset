@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f892d9115c468d829c4d83cfe541ef, type: 3}
   m_Name: Mine
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
-  id: 
-  displayName: 
-  description: 
-  category: 0
+  id: 3
+  displayName: Gold Mine
+  description: Produces Gold
+  category: 2
   icon: {fileID: 0}
   prefab: {fileID: 7505317572642171324, guid: c71134b4ea593254ba53a86120e08f33, type: 3}
   footprint: {x: 4, y: 4}
@@ -23,7 +23,17 @@ MonoBehaviour:
   unlockLevel: 1
   buildCost: []
   storageProvided: []
-  productionPerTick: []
+  productionPerTick:
+  - type: 0
+    amount: 0
+  - type: 0
+    amount: 0
+  - type: 0
+    amount: 0
+  - type: 0
+    amount: 0
+  - type: 0
+    amount: 0
   upkeepPerTick: []
   populationCapacity: 0
   happinessImpact: 0

@@ -94,12 +94,15 @@ public class ResourceTopBar : MonoBehaviour
     private ResourceCounterView ResolveView(ResourceEntry entry)
     {
         if (entry.viewOverride != null)
+            {
+            entry.viewOverride.gameObject.name = $"{entry.type}Counter";
             return entry.viewOverride;
-
+            }
         if (counterPrefab == null)
             return null;
 
         ResourceCounterView view = Instantiate(counterPrefab, container);
+        view.gameObject.name = $"{entry.type}Counter";
         generatedViews.Add(view);
         return view;
     }

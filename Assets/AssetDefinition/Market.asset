@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f892d9115c468d829c4d83cfe541ef, type: 3}
   m_Name: Market
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
-  id: 
-  displayName: 
-  description: 
+  id: 2
+  displayName: Market Stall
+  description: Sells Fruit for cash
   category: 2
   icon: {fileID: 0}
   prefab: {fileID: 1045292526843632829, guid: 209fd8a9c26d5b14bace0b0f6c040afe, type: 3}
