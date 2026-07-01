@@ -37,6 +37,9 @@ public class BuildManager : MonoBehaviour
 
     private readonly List<GameObject> footprintMarkers = new List<GameObject>();
 
+    [Header("Placement Modes")]
+    public RoadPlacementController roadPlacementController;
+
     private void Update()
     {
         bool pressedThisFrame = WasPrimaryPressedThisFrame();
@@ -53,17 +56,52 @@ public class BuildManager : MonoBehaviour
 
             return;
         }
-        
+
+        if (IsRoadSelected())
+        {
+            DestroyPreview();
+            HideFootprintCells();
+
+            bool hasPointerCell = TryGetPointerCell(out Vector2Int mouseCell);
+
+            roadPlacementController.Tick(
+                selectedBuilding,
+                hasPointerCell ? mouseCell : (Vector2Int?)null,
+                releasedThisFrame
+            );
+
+            return;
+        }
+
         UpdatePreview();
 
         if (WasPrimaryReleasedThisFrame())
             TryPlaceSelected();
     }
 
+    private bool IsRoadSelected()
+    {
+        return selectedBuilding != null &&
+            selectedBuilding.category == BuildingCategory.Road;
+    }
+
     public void SelectBuilding(BuildingDefinition definition)
     {
         selectedBuilding = definition;
+
+        if (roadPlacementController != null)
+        {
+            roadPlacementController.Cancel();
+        }
+        if (IsRoadSelected())
+        {
+            DestroyPreview();
+            HideFootprintCells();
+            return;
+        }
+        
         RebuildPreview();
+    
     }
 
     
@@ -77,6 +115,10 @@ public class BuildManager : MonoBehaviour
     {
         selectedBuilding = null;
         DestroyPreview();
+        HideFootprintCells();
+
+        if (roadPlacementController != null)
+            roadPlacementController.Cancel();
     }
     
     private void HidePreview()
@@ -138,7 +180,6 @@ public class BuildManager : MonoBehaviour
             return;
 
         bool hasPointerCell = TryGetPointerCell(out Vector2Int mouseCell);
-
         if (hasPointerCell)
         {
             previewCell = GetCenteredOriginCell(

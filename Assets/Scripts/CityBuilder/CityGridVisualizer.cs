@@ -58,8 +58,8 @@ public class CityGridVisualizer : MonoBehaviour
         if (editorGrid == null)
         return;
 
-        if (!showGrid)
-        return;
+        // if (!showGrid)
+        // return;
 
         Gizmos.color = lineColor;
 
